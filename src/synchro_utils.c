@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   synchro_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 12:53:49 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/25 11:56:33 by fmoulin          ###   ########.fr       */
+/*   Created: 2025/11/25 11:16:51 by fmoulin           #+#    #+#             */
+/*   Updated: 2025/11/25 11:45:57 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "philo.h"
 
-long	get_time(t_time_code time_code)
+void	wait_all_threads(t_table *table)
 {
-	struct	timeval	tv ;
-	
-	if (gettimeofday(&tv, NULL))
-		error_exit("Gettimeofday failed");
-	if (time_code == SECOND)
-		return (tv.tv_sec + (tv.tv_usec / 1e6));
+	while (!get_bool(&table->table_mutex, &table->all_thread_ready))
+		;
 }

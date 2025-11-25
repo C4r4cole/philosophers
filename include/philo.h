@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:27 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/24 18:15:10 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/25 11:51:14 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef enum e_opcode
 	JOIN,
 	DETACH,
 }			t_opcode;
+
+typedef enum e_time_code
+{
+	SECOND,
+	MILLISECOND,
+	MICROSECOND,
+}			t_time_code;
 
 // ************************ //
 //        STRUCTURES        //
@@ -66,7 +73,9 @@ typedef struct s_table
 	long	time_to_sleep;
 	long	nbr_limit_meals;
 	long	start_simulation;
-	long	end_simulation;
+	bool	end_simulation;
+	bool	all_thread_ready;
+	t_mtx	table_mutex;
 	t_fork	*forks;
 	t_philo	*philos;
 }				t_table;
@@ -89,3 +98,14 @@ void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *), void *data, t_o
 
 /* init.c */
 void	data_init(t_table *table);
+
+/* getters_setters.c */
+void	set_bool(t_mtx *mutex, bool *dest, bool value);
+bool	get_bool(t_mtx *mutex, bool *value);
+void	set_long(t_mtx *mutex, long *dest, long value);
+long	get_long(t_mtx *mutex, long *value);
+bool	simulation_finished(t_table *table);
+
+
+/* synchro_utils.c */
+void	wait_all_threads(t_table *table);

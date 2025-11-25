@@ -6,7 +6,7 @@
 #    By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/11 14:02:02 by fmoulin           #+#    #+#              #
-#    Updated: 2025/11/24 15:50:01 by fmoulin          ###   ########.fr        #
+#    Updated: 2025/11/25 11:17:42 by fmoulin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,14 @@ RM          = rm -f
 SRCS =  $(SRC_DIR)/main.c \
         $(SRC_DIR)/init.c \
         $(SRC_DIR)/parsing.c \
-        $(SRC_DIR)/routine.c \
+        $(SRC_DIR)/dinner.c \
         $(SRC_DIR)/threads.c \
         $(SRC_DIR)/time.c \
         $(SRC_DIR)/utils.c \
-        $(SRC_DIR)/safe_functions.c
-
+        $(SRC_DIR)/safe_functions.c \
+        $(SRC_DIR)/getters_setters.c \
+        $(SRC_DIR)/synchro_utils.c
+		
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # ===========================
