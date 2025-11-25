@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:39 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/24 15:05:31 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/25 17:59:50 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static long	ft_atol(const char *str)
 	return (num);
 }
 
-void	parse_input(t_table *table, char *argv)
+void	parse_input(t_table *table, char **argv)
 {
 	table->philo_nbr = ft_atol(argv[1]);
 	table->time_to_die = ft_atol(argv[2]) * 1e3;

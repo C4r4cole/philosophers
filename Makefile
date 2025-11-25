@@ -6,7 +6,7 @@
 #    By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/11 14:02:02 by fmoulin           #+#    #+#              #
-#    Updated: 2025/11/25 11:17:42 by fmoulin          ###   ########.fr        #
+#    Updated: 2025/11/25 14:41:53 by fmoulin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ SRCS =  $(SRC_DIR)/main.c \
         $(SRC_DIR)/utils.c \
         $(SRC_DIR)/safe_functions.c \
         $(SRC_DIR)/getters_setters.c \
-        $(SRC_DIR)/synchro_utils.c
+        $(SRC_DIR)/synchro_utils.c \
+        $(SRC_DIR)/write.c
 		
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

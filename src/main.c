@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:36 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/24 15:08:01 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/25 18:03:42 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main (int argc, char **argv)
 	{
 		// Le nombre d'arguments est correct
 		// 1) errors checking, filling table data
-			parse_input(&table, argv);
+			parse_input(&table, *argv);
 			
 		// 2) creating philosophers, mallocking philosophers, etc.
 			data_init(&table);
@@ -30,7 +30,7 @@ int	main (int argc, char **argv)
 
 		// 4) No leaks, cleaning everything
 		// The simulation end when all philos are full or if one dies
-			clean(&table);
+			// clean(&table);
 
 	}
 	else

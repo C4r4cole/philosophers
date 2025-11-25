@@ -6,15 +6,15 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:49:22 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/24 18:14:51 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/25 18:13:52 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "philo.h"
 
-size_t	safe_malloc(size_t bytes)
+void	*safe_malloc(size_t bytes)
 {
-	size_t	*ret;
+	void	*ret;
 	
 	ret = malloc(bytes);
 	if (!ret)
@@ -75,7 +75,7 @@ static void handle_thread_error(int status, t_opcode opcode)
 void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *), void *data, t_opcode opcode)
 {
 	if (opcode == CREATE)
-		handle_thread_error(pthread_create(*thread, NULL, foo, data), opcode);
+		handle_thread_error(pthread_create(thread, NULL, foo, data), opcode);
 	else if (opcode == JOIN)
 		handle_thread_error(pthread_join(*thread, NULL), opcode);
 	else if (opcode == DETACH)
