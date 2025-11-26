@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:32 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/25 17:48:39 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/26 11:05:26 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void assign_forks(t_philo *philo, t_fork *forks, int philo_position)
 	philo_nbr = philo->table->philo_nbr;
 	philo->first_fork = &forks[(philo_position + 1) % philo_nbr];
 	philo->second_fork = &forks[philo_position];
-	if (philo->id % 2)
+	if (philo->id % 2 == 0)
 	{
 		philo->first_fork = &forks[philo_position];
 		philo->second_fork = &forks[(philo_position + 1) % philo_nbr];
@@ -35,7 +35,7 @@ static void philo_init(t_table *table)
 	while (i < table->philo_nbr)
 	{
 		philo = table->philos + i;
-		philo->id = i;
+		philo->id = i + 1;
 		philo->meals_counter = 0;
 		philo->full = false;
 		philo->table = table;
