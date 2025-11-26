@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:52 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/25 18:06:34 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/26 17:38:31 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,26 @@ void	precise_usleep(long usec, t_table *table)
 	}
 }
 
-void	ft_putstr_fd(char *s, int fd)
+void	clean(t_table *table)
 {
-	int	i;
+	t_philo	*philo;
+	int		i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (i < table->philo_nbr)
 	{
-		write(fd, &s[i], 1);
+		philo = table->philos + i;
+		safe_mutex_handle(&philo->philo_mutex, DESTROY);
 		i++;
 	}
+	safe_mutex_handle(&table->table_mutex, DESTROY);
+	safe_mutex_handle(&table->write_mutex, DESTROY);
+	free(table->forks);
+	free(table->philos);
 }
 
 void error_exit(char *error)
 {
-	ft_putstr_fd(error, 2);
+	printf("%s\n", error);
 	exit(EXIT_FAILURE);
 }

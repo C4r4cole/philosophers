@@ -6,15 +6,32 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:43 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/25 17:57:44 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/26 18:04:14 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "philo.h"
 
-static void	thinking(t_philo *philo)
+void	*lone_philo(void *arg)
+{
+	t_philo *philo;
+	
+	philo = (t_philo *)arg;
+	wait_all_threads(philo->table);
+	set_long(&philo->philo_mutex, &philo->last_meal_time, get_time(MILLISECOND));
+	increase_long(&philo->table->table_mutex, &philo->table->threads_running_nbr);
+	write_status(TAKE_FIRST_FORK, philo);
+	while (!simulation_finished(philo->table))
+		usleep(200);
+	return (NULL);
+}
+
+void	thinking(t_philo *philo)
 {
 	write_status(THINKING, philo);
+	if (philo->table->philo_nbr % 2 == 0)
+		return ;
+	
 }
 
 static void eat(t_philo *philo)
@@ -39,6 +56,9 @@ void	*dinner_simulation(void *data)
 
 	philo = (t_philo *)data;
 	wait_all_threads(philo->table);
+	set_long(&philo->philo_mutex, &philo->last_meal_time, get_time(MILLISECOND));
+	increase_long(&philo->table->table_mutex, &philo->table->threads_running_nbr);
+	de_synchronize_philos(philo);
 	while (!simulation_finished(philo->table))
 	{
 		if (philo->full)
@@ -59,7 +79,7 @@ void	dinner_start(t_table *table)
 	if (table->nbr_limit_meals == 0)
 		return ;
 	else if (table->philo_nbr == 1)
-		; // TODO
+		safe_thread_handle(&table->philos[0].thread_id, lone_philo, &table->philos[0], CREATE);
 	else
 	{
 		while (i < table->philo_nbr)
@@ -68,6 +88,7 @@ void	dinner_start(t_table *table)
 			i++;
 		}
 	}
+	safe_thread_handle(&table->monitor, monitor_dinner, table, CREATE);
 	table->start_simulation = get_time(MILLISECOND);
 	set_bool(&table->table_mutex, &table->all_thread_ready, true);
 	i = 0;
@@ -76,4 +97,6 @@ void	dinner_start(t_table *table)
 		safe_thread_handle(&table->philos[i].thread_id, NULL, NULL, JOIN);
 		i++;
 	}
+	set_bool(&table->table_mutex, &table->end_simulation, true);
+	safe_thread_handle(&table->monitor, NULL, NULL, JOIN);
 }

@@ -6,7 +6,7 @@
 #    By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/11 14:02:02 by fmoulin           #+#    #+#              #
-#    Updated: 2025/11/25 14:41:53 by fmoulin          ###   ########.fr        #
+#    Updated: 2025/11/26 11:37:52 by fmoulin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS =  $(SRC_DIR)/main.c \
         $(SRC_DIR)/init.c \
         $(SRC_DIR)/parsing.c \
         $(SRC_DIR)/dinner.c \
-        $(SRC_DIR)/threads.c \
+        $(SRC_DIR)/monitoring.c \
         $(SRC_DIR)/time.c \
         $(SRC_DIR)/utils.c \
         $(SRC_DIR)/safe_functions.c \

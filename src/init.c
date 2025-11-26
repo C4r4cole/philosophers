@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:32 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/26 11:05:26 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/26 11:44:50 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	data_init(t_table *table)
 	i = 0;
 	table->end_simulation = false;
 	table->all_thread_ready = false;
+	table->threads_running_nbr = 0;
 	table->philos = safe_malloc(sizeof(t_philo) * table->philo_nbr);
 	safe_mutex_handle(&table->table_mutex, INIT);
 	safe_mutex_handle(&table->write_mutex, INIT);

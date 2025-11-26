@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:36 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/26 11:00:10 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/26 17:40:02 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main (int argc, char **argv)
 
 		// 4) No leaks, cleaning everything
 		// The simulation end when all philos are full or if one dies
-			// clean(&table);
+			clean(&table);
 
 	}
 	else
