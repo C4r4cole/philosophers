@@ -6,18 +6,21 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:27 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/27 10:51:25 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 16:29:26 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
-#include <limits.h>
-#include <pthread.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
-#include <unistd.h>
+#ifndef PHILO_H
+# define PHILO_H
+
+# include <errno.h>
+# include <limits.h>
+# include <pthread.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <sys/time.h>
+# include <unistd.h>
 
 // ************************ //
 //           ENUMS          //
@@ -142,4 +145,6 @@ void					*dinner_simulation(void *data);
 void					thinking(t_philo *philo, bool pre_simulation);
 
 /* monitoring.c */
-void *monitor_dinner(void *data);
+void					*monitor_dinner(void *data);
+
+#endif

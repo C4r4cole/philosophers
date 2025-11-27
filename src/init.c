@@ -6,16 +6,16 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:32 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/26 11:44:50 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 16:21:39 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philo.h"
+#include "philo.h"
 
-static void assign_forks(t_philo *philo, t_fork *forks, int philo_position)
+static void	assign_forks(t_philo *philo, t_fork *forks, int philo_position)
 {
-	int philo_nbr;	
-	
+	int	philo_nbr;
+
 	philo_nbr = philo->table->philo_nbr;
 	philo->first_fork = &forks[(philo_position + 1) % philo_nbr];
 	philo->second_fork = &forks[philo_position];
@@ -26,10 +26,10 @@ static void assign_forks(t_philo *philo, t_fork *forks, int philo_position)
 	}
 }
 
-static void philo_init(t_table *table)
+static void	philo_init(t_table *table)
 {
-	int	i;
-	t_philo *philo;
+	int		i;
+	t_philo	*philo;
 
 	i = 0;
 	while (i < table->philo_nbr)

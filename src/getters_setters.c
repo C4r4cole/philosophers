@@ -6,11 +6,11 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 10:58:18 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/25 11:11:14 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 16:25:04 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philo.h"
+#include "philo.h"
 
 void	set_bool(t_mtx *mutex, bool *dest, bool value)
 {
@@ -18,10 +18,11 @@ void	set_bool(t_mtx *mutex, bool *dest, bool value)
 	*dest = value;
 	safe_mutex_handle(mutex, UNLOCK);
 }
+
 bool	get_bool(t_mtx *mutex, bool *value)
 {
-	bool ret;
-	
+	bool	ret;
+
 	safe_mutex_handle(mutex, LOCK);
 	ret = *value;
 	safe_mutex_handle(mutex, UNLOCK);
@@ -34,10 +35,11 @@ void	set_long(t_mtx *mutex, long *dest, long value)
 	*dest = value;
 	safe_mutex_handle(mutex, UNLOCK);
 }
+
 long	get_long(t_mtx *mutex, long *value)
 {
-	long ret;
-	
+	long	ret;
+
 	safe_mutex_handle(mutex, LOCK);
 	ret = *value;
 	safe_mutex_handle(mutex, UNLOCK);

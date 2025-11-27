@@ -6,11 +6,11 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:16:51 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/27 10:52:08 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 16:13:31 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philo.h"
+#include "philo.h"
 
 void	wait_all_threads(t_table *table)
 {
@@ -21,7 +21,7 @@ void	wait_all_threads(t_table *table)
 bool	all_threads_running(t_mtx *mutex, long *threads, long philo_nbr)
 {
 	bool	ret;
-	
+
 	ret = false;
 	safe_mutex_handle(mutex, LOCK);
 	if (*threads == philo_nbr)
@@ -47,6 +47,6 @@ void	de_synchronize_philos(t_philo *philo)
 	else
 	{
 		if (philo->id % 2)
-			thinking(philo, true);	
+			thinking(philo, true);
 	}
 }

@@ -6,18 +6,18 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:52 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/27 11:16:30 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 16:13:46 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philo.h"
+#include "philo.h"
 
 void	precise_usleep(long usec, t_table *table)
 {
 	long	start;
 	long	elapsed;
 	long	remain;
-	
+
 	start = get_time(MICROSECOND);
 	while (get_time(MICROSECOND) - start < usec)
 	{
@@ -53,7 +53,7 @@ void	clean(t_table *table)
 	free(table->philos);
 }
 
-void error_exit(char *error)
+void	error_exit(char *error)
 {
 	printf("%s\n", error);
 	exit(EXIT_FAILURE);

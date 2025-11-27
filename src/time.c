@@ -6,16 +6,16 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:49 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/25 14:04:45 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 16:22:51 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philo.h"
+#include "philo.h"
 
 long	get_time(t_time_code time_code)
 {
-	struct	timeval	tv ;
-	
+	struct timeval	tv;
+
 	if (gettimeofday(&tv, NULL))
 		error_exit("Gettimeofday failed");
 	if (time_code == SECOND)
