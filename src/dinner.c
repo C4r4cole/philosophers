@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:43 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/26 18:04:14 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 11:24:58 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,22 @@ void	*lone_philo(void *arg)
 	return (NULL);
 }
 
-void	thinking(t_philo *philo)
+void	thinking(t_philo *philo, bool pre_simulation)
 {
-	write_status(THINKING, philo);
+	long	t_eat;
+	long	t_sleep;
+	long	t_think;
+	
+	if (!pre_simulation)
+		write_status(THINKING, philo);
+	t_eat = philo->table->time_to_eat;
+	t_sleep = philo->table->time_to_sleep;
+	t_think = t_eat * 2 - t_sleep;
 	if (philo->table->philo_nbr % 2 == 0)
 		return ;
-	
+	if (t_think < 0)
+		t_think = 0;
+	precise_usleep(t_think * 0.42, philo->table);
 }
 
 static void eat(t_philo *philo)
@@ -66,7 +76,7 @@ void	*dinner_simulation(void *data)
 		eat(philo);
 		write_status(SLEEPING, philo);
 		precise_usleep(philo->table->time_to_sleep, philo->table);
-		thinking(philo);
+		thinking(philo, false);
 	}
 	return (NULL);
 }

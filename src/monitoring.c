@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:46 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/26 16:10:15 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 11:23:25 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	philo_died(t_philo *philo)
 	if(get_bool(&philo->philo_mutex, &philo->full))
 		return (false);
 	elapsed = get_time(MILLISECOND) - get_long(&philo->philo_mutex, &philo->last_meal_time);
-	t_to_die = philo->table->time_to_die / 1e3;
+	t_to_die = philo->table->time_to_die;
 	if (elapsed > t_to_die)
 		return (true);
 	return (false);
@@ -33,7 +33,7 @@ void *monitor_dinner(void *data)
 	
 	table = (t_table *)data;
 	while (!all_threads_running(&table->table_mutex, &table->threads_running_nbr, table->philo_nbr))
-		;
+		usleep(100);
 	while (!simulation_finished(table))
 	{
 		i = 0;

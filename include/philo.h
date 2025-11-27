@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:27 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/26 18:03:24 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 10:51:25 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void					write_status(t_philo_status status, t_philo *philo);
 /* dinner.c */
 void					dinner_start(t_table *table);
 void					*dinner_simulation(void *data);
-void					thinking(t_philo *philo);
+void					thinking(t_philo *philo, bool pre_simulation);
 
 /* monitoring.c */
 void *monitor_dinner(void *data);

@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:16:51 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/26 18:00:49 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/11/27 10:52:08 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	de_synchronize_philos(t_philo *philo)
 	else
 	{
 		if (philo->id % 2)
-			thinking(philo);	
+			thinking(philo, true);	
 	}
 }
