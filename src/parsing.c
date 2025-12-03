@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:39 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/27 16:21:51 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/03 11:43:15 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ static long	ft_atol(const char *str)
 void	parse_input(t_table *table, char **argv)
 {
 	table->philo_nbr = ft_atol(argv[1]);
-	table->time_to_die = ft_atol(argv[2]) * 1e3;
-	table->time_to_eat = ft_atol(argv[3]) * 1e3;
-	table->time_to_sleep = ft_atol(argv[4]) * 1e3;
-	if (table->time_to_die < 6e4 || table->time_to_eat < 6e4
-		|| table->time_to_sleep < 6e4)
+	table->time_to_die = ft_atol(argv[2]);
+	table->time_to_eat = ft_atol(argv[3]);
+	table->time_to_sleep = ft_atol(argv[4]);
+	if (table->time_to_die < 60 || table->time_to_eat < 60
+		|| table->time_to_sleep < 60)
 		error_exit("Use timestamps superior to 60ms");
 	if (argv[5])
 		table->nbr_limit_meals = ft_atol(argv[5]);

@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:16:51 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/27 16:13:31 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/03 11:47:23 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	de_synchronize_philos(t_philo *philo)
 	if (philo->table->philo_nbr % 2 == 0)
 	{
 		if (philo->id % 2 == 0)
-			precise_usleep(3e4, philo->table);
+			precise_msleep(30, philo->table);
 	}
 	else
 	{

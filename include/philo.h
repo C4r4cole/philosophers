@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:27 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/27 16:29:26 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/03 11:41:29 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_table
 
 /* utils.c */
 void					error_exit(char *error);
-void					precise_usleep(long usec, t_table *table);
+void					precise_msleep(long usec, t_table *table);
 void					clean(t_table *table);
 
 /* parsing.c */
