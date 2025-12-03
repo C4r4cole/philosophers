@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:16:51 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/12/03 11:47:23 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/03 16:58:29 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ void	increase_long(t_mtx *mutex, long *value)
 
 void	de_synchronize_philos(t_philo *philo)
 {
-	if (philo->table->philo_nbr % 2 == 0)
-	{
-		if (philo->id % 2 == 0)
-			precise_msleep(30, philo->table);
-	}
-	else
-	{
-		if (philo->id % 2)
-			thinking(philo, true);
-	}
+	if (philo->id % 2 == 0)
+		usleep(100);
 }

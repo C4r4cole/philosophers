@@ -6,34 +6,11 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:52 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/12/03 11:40:08 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/03 17:01:27 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-// void	precise_usleep(long usec, t_table *table)
-// {
-// 	long	start;
-// 	long	elapsed;
-// 	long	remain;
-
-// 	start = get_time(MICROSECOND);
-// 	while (get_time(MICROSECOND) - start < usec)
-// 	{
-// 		if (simulation_finished(table))
-// 			break ;
-// 		elapsed = get_time(MICROSECOND) - start;
-// 		remain = usec - elapsed;
-// 		if (remain > 1e3)
-// 			usleep(remain / 2);
-// 		else
-// 		{
-// 			while (get_time(MICROSECOND) - start < usec)
-// 				;
-// 		}
-// 	}
-// }
 
 void precise_msleep(long ms, t_table *table)
 {
