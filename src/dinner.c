@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:43 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/12/04 12:31:47 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/04 13:32:49 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	*lone_philo(void *arg)
 	return (NULL);
 }
 
-void thinking(t_philo *philo, bool pre_simulation)
+void	thinking(t_philo *philo, bool pre_simulation)
 {
 	long	t_think;
-	
+
 	t_think = philo->table->time_to_eat - philo->table->time_to_sleep;
-    if (!pre_simulation)
+	if (!pre_simulation)
 		write_status(THINKING, philo);
 	if (t_think < 0)
 		t_think = 0;
