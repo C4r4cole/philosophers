@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:43 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/12/03 17:01:57 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/04 12:31:47 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,14 @@ void	*lone_philo(void *arg)
 
 void thinking(t_philo *philo, bool pre_simulation)
 {
+	long	t_think;
+	
+	t_think = philo->table->time_to_eat - philo->table->time_to_sleep;
     if (!pre_simulation)
-        write_status(THINKING, philo);
+		write_status(THINKING, philo);
+	if (t_think < 0)
+		t_think = 0;
+	precise_msleep(t_think / 2, philo->table);
 }
 
 static void	eat(t_philo *philo)
@@ -65,7 +71,7 @@ void	*dinner_simulation(void *data)
 	de_synchronize_philos(philo);
 	while (!simulation_finished(philo->table))
 	{
-		if (philo->full)
+		if (get_bool(&philo->philo_mutex, &philo->full))
 			break ;
 		eat(philo);
 		write_status(SLEEPING, philo);
@@ -91,8 +97,8 @@ void	dinner_start(t_table *table)
 			safe_thread_handle(&table->philos[i].thread_id, dinner_simulation,
 				&table->philos[i], CREATE);
 	}
-	safe_thread_handle(&table->monitor, monitor_dinner, table, CREATE);
 	table->start_simulation = get_time(MILLISECOND);
+	safe_thread_handle(&table->monitor, monitor_dinner, table, CREATE);
 	set_bool(&table->table_mutex, &table->all_thread_ready, true);
 	i = -1;
 	while (++i < table->philo_nbr)

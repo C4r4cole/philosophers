@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 14:41:30 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/11/27 16:26:49 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/04 11:57:03 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	write_status(t_philo_status status, t_philo *philo)
 	long	elapsed;
 
 	elapsed = get_time(MILLISECOND) - philo->table->start_simulation;
-	if (philo->full)
+	if (get_bool(&philo->philo_mutex, &philo->full))
 		return ;
 	safe_mutex_handle(&philo->table->write_mutex, LOCK);
 	if ((status == TAKE_FIRST_FORK || status == TAKE_SECOND_FORK)

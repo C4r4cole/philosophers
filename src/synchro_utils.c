@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:16:51 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/12/03 16:58:29 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/04 11:59:14 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	wait_all_threads(t_table *table)
 {
 	while (!get_bool(&table->table_mutex, &table->all_thread_ready))
-		;
+		usleep(100);
 }
 
 bool	all_threads_running(t_mtx *mutex, long *threads, long philo_nbr)

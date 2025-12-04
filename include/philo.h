@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:27 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/12/03 15:30:21 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/04 11:48:08 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <valgrind/valgrind.h>
 
 // ************************ //
 //           ENUMS          //

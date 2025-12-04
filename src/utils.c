@@ -6,7 +6,7 @@
 /*   By: fmoulin <fmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 12:53:52 by fmoulin           #+#    #+#             */
-/*   Updated: 2025/12/03 17:01:27 by fmoulin          ###   ########.fr       */
+/*   Updated: 2025/12/04 12:37:02 by fmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 void precise_msleep(long ms, t_table *table)
 {
-    long start = get_time(MILLISECOND);
-    while (!simulation_finished(table)
-        && get_time(MILLISECOND) - start < ms)
-        usleep(100);
+    long start;
+	
+	start = get_time(MILLISECOND);
+    while (!simulation_finished(table))
+	{
+        if (get_time(MILLISECOND) - start >= ms)
+			break ;
+		usleep(100);
+	}
 }
 
 void	clean(t_table *table)
